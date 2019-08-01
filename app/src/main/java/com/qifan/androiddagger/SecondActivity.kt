@@ -1,14 +1,13 @@
 package com.qifan.androiddagger
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.qifan.androiddagger.di.scope.ActivityScope
+import com.qifan.androiddagger.di.scope.FragmentScope
 import dagger.Provides
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_main.*
+import dagger.android.*
 import javax.inject.Inject
 
 /**
@@ -24,8 +23,8 @@ class SecondActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        textView.text = className
+        setContentView(R.layout.activity_fragment)
+        replaceFragmentInActivity(TestFragment(), R.id.container)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
@@ -38,4 +37,19 @@ class SecondActivity : AppCompatActivity(), HasAndroidInjector {
             return SecondActivity::class.java.simpleName
         }
     }
+
+
+    @dagger.Module
+    abstract class FragmentBindingModule {
+        @FragmentScope
+        @ContributesAndroidInjector(modules = [TestFragment.Module::class])
+        internal abstract fun testFragment(): TestFragment
+    }
+}
+
+
+fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int) {
+    supportFragmentManager.beginTransaction()
+        .replace(frameId, fragment)
+        .commit()
 }

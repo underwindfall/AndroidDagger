@@ -18,6 +18,6 @@ abstract class ActivityBindModule {
 
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [SecondActivity.Module::class])
+    @ContributesAndroidInjector(modules = [SecondActivity.Module::class, SecondActivity.FragmentBindingModule::class])
     internal abstract fun secondActivity(): SecondActivity
 }
