@@ -1,6 +1,5 @@
 package com.qifan.androiddagger
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.qifan.androiddagger.di.scope.ActivityScope
@@ -12,35 +11,31 @@ import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
+/**
+ * Created by Qifan on 2019-08-01.
+ */
+class SecondActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var className: String
 
-    override fun androidInjector(): AndroidInjector<Any> {
-        return dispatchingAndroidInjector
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         textView.text = className
-        textView.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
-        }
     }
 
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 
     @dagger.Module
     class Module {
         @Provides
         @ActivityScope
         fun provideClassName(): String {
-            return MainActivity::class.java.simpleName
+            return SecondActivity::class.java.simpleName
         }
     }
-
 }
