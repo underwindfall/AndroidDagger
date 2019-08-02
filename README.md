@@ -4,7 +4,7 @@
 ## Dagger
 
 1. Component 是连接 **@Inject** 所需要的变量和变量所需要的构造器之间的链接桥梁
-<!--![Component](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/dagger/component.png)-->
+![Component](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/dagger/component.png)
 - @BindsInstance
 这个是目前dagger中比较推荐使用的一种绑定**Component**的方法，他主要的作用是在定义了生成的**DaggerComponent**的*builder*
 方法，这样的所定义的**Component**就会持有你所提供的**parameter**参数，这样在你所需要的module中就不再需要了。
@@ -92,7 +92,7 @@ Optional<TestClass1> mTestClass1;
 ```
 
 2. Module
-<!--![Module](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/kotlin/Module.png)-->
+![Module](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/kotlin/Module.png)
 
 可惜的是*@Inject*并非万能
 
@@ -149,6 +149,7 @@ Set注入对象 没啥好说的就是简单的注入一个HashSet，也可以同
 - @IntoMap
 
 ## Dagger Android
+
 
 
 ## DI Pattern
