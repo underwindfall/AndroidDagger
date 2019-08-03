@@ -144,6 +144,7 @@ Provides和lazy差不多但是会根据Module提供的方法所进行注入Provi
 所以@Binds就这样诞生了，可以想象的是，@Binds的作用其实就是告诉dagger，当请求注入一个接口时，我们使用某个实现类何其绑定，用实现类来进行注入。
 
 - @IntoSet
+
 Set注入对象 没啥好说的就是简单的注入一个HashSet，也可以同时注入多个**@ElementsIntoSet**
 
 - @IntoMap
