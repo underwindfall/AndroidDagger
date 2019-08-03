@@ -150,7 +150,8 @@ Set注入对象 没啥好说的就是简单的注入一个HashSet，也可以同
 
 ## Dagger Android
 
-
+![Dagger分析](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/dagger/Dagger.png)
+![Dagger Android分析](https://raw.githubusercontent.com/underwindfall/blogAssets/master/blog/dagger/Dagger%20Android.png)
 
 ## DI Pattern
 依赖注入，就是根据依赖关系解耦。本来的依赖关系被第三方Factory解除。
